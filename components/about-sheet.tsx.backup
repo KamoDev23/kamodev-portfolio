@@ -1,0 +1,232 @@
+"use client"
+
+import { useEffect } from "react"
+import { X } from "lucide-react"
+import Image from "next/image"
+
+interface AboutSheetProps {
+  isOpen: boolean
+  onClose: () => void
+}
+
+const timeline = [
+  {
+    year: "2024",
+    title: "Senior Full-Stack Developer",
+    company: "Tech Innovations Inc.",
+    description: "Leading development of scalable web applications",
+  },
+  {
+    year: "2022",
+    title: "Full-Stack Developer",
+    company: "Digital Solutions Co.",
+    description: "Built modern web experiences for enterprise clients",
+  },
+  {
+    year: "2020",
+    title: "Frontend Developer",
+    company: "Creative Studio",
+    description: "Crafted beautiful user interfaces and interactions",
+  },
+  {
+    year: "2018",
+    title: "Junior Developer",
+    company: "StartUp Labs",
+    description: "Started journey in web development",
+  },
+]
+
+export function AboutSheet({ isOpen, onClose }: AboutSheetProps) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "unset"
+    }
+    return () => {
+      document.body.style.overflow = "unset"
+    }
+  }, [isOpen])
+
+  return (
+    <>
+      {/* Backdrop */}
+      <div
+        className={`fixed inset-0 bg-black/20 backdrop-blur-sm z-40 transition-opacity duration-500 ${
+          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={onClose}
+      />
+
+      {/* Sheet */}
+      <div
+        className={`fixed inset-x-0 bottom-0 bg-[#f5f5f5] dark:bg-[#1a1a1a] z-50 transition-all duration-700 ease-out ${
+          isOpen ? "translate-y-0" : "translate-y-full"
+        }`}
+        style={{ height: "100vh" }}
+      >
+        <div className="h-full overflow-y-auto">
+          <div className="max-w-[1200px] mx-auto px-4 sm:px-8 py-8 sm:py-12">
+            {/* Close Button */}
+            <button
+              onClick={onClose}
+              className="absolute top-6 right-6 sm:top-8 sm:right-8 hover:opacity-70 transition-opacity text-[#333333] dark:text-[#e0e0e0]"
+              aria-label="Close"
+            >
+              <X className="w-6 h-6 sm:w-8 sm:h-8" />
+            </button>
+
+            {/* Header */}
+            <div className="mb-12 sm:mb-16 animate-fade-in">
+              <h2 className="font-serif italic text-4xl sm:text-6xl md:text-7xl text-[#666666] dark:text-[#999999] mb-4 sm:mb-6 transition-colors duration-500">About</h2>
+              <div className="w-16 sm:w-24 h-[1px] bg-[#333333]/20 dark:bg-[#e0e0e0]/20 transition-colors duration-500" />
+            </div>
+
+            {/* Profile Card */}
+            <div className="mb-12 sm:mb-16 max-w-md mx-auto animate-slide-up">
+              <div className="bg-white/70 dark:bg-[#222222]/70 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-[#333333]/10 dark:border-[#e0e0e0]/10 hover:border-[#333333]/20 dark:hover:border-[#e0e0e0]/20 transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] relative overflow-hidden">
+                {/* Decorative Gradient Background */}
+                <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-blue-400/30 via-blue-300/20 to-transparent rounded-full blur-3xl" />
+                <div className="absolute top-8 right-8 w-32 h-32 bg-gradient-to-br from-blue-500/20 via-blue-400/10 to-transparent rounded-full blur-2xl" />
+
+                <div className="relative">
+                  {/* Profile Image */}
+                  <div className="mb-6">
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                      <Image
+                        src="/professional-developer-portrait.png"
+                        alt="Kamo.Dev Profile"
+                        width={96}
+                        height={96}
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Name and Title */}
+                  <div className="mb-6">
+                    <div className="flex items-center gap-3 mb-2">
+                      <h3 className="text-2xl sm:text-3xl font-bold">Kamo.Dev</h3>
+                      <span className="flex items-center gap-1.5 text-sm text-green-600">
+                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                        Online
+                      </span>
+                    </div>
+                    <p className="text-[#666666] text-sm sm:text-base">Full-Stack Developer</p>
+                  </div>
+
+                  {/* Stats */}
+                  <div className="grid grid-cols-3 gap-4 mb-6 py-4 border-y border-[#333333]/10">
+                    <div className="text-center">
+                      <div className="text-xl sm:text-2xl font-bold mb-1">5.0</div>
+                      <div className="text-xs text-[#666666]">rating</div>
+                    </div>
+                    <div className="text-center border-x border-[#333333]/10">
+                      <div className="text-xl sm:text-2xl font-bold mb-1">50+</div>
+                      <div className="text-xs text-[#666666]">projects</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-xl sm:text-2xl font-bold mb-1">100%</div>
+                      <div className="text-xs text-[#666666]">success</div>
+                    </div>
+                  </div>
+
+                  {/* CTA Button */}
+                  <button className="w-full bg-[#333333] text-white py-3 sm:py-4 rounded-lg hover:bg-[#000000] transition-all duration-300 font-medium hover:shadow-lg hover:scale-[1.02]">
+                    Get in Touch
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Content Grid */}
+            <div className="grid md:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-16">
+              {/* Bio Card */}
+              <div className="bg-white/50 backdrop-blur-sm p-6 sm:p-8 rounded-sm border border-[#333333]/10 hover:border-[#333333]/20 transition-all duration-300 animate-slide-up hover:shadow-lg hover:scale-[1.02]">
+                <h3 className="text-lg sm:text-xl font-medium mb-4 tracking-wide">KAMO.DEV</h3>
+                <p className="text-sm sm:text-base leading-relaxed text-[#666666] mb-4">
+                  A passionate developer crafting beautiful digital experiences with a focus on clean design and
+                  seamless functionality.
+                </p>
+                <p className="text-sm sm:text-base leading-relaxed text-[#666666] mb-6">
+                  Specializing in modern web technologies, I bring ideas to life through code, creating intuitive
+                  interfaces that users love.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["React", "Next.js", "TypeScript", "Tailwind", "Node.js"].map((skill) => (
+                    <span
+                      key={skill}
+                      className="text-xs px-3 py-1 bg-[#333333]/5 hover:bg-[#333333]/10 transition-colors rounded-full"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Contact Card */}
+              <div className="bg-white/50 backdrop-blur-sm p-6 sm:p-8 rounded-sm border border-[#333333]/10 hover:border-[#333333]/20 transition-all duration-300 animate-slide-up delay-100 hover:shadow-lg hover:scale-[1.02]">
+                <h3 className="text-lg sm:text-xl font-medium mb-4 tracking-wide">GET IN TOUCH</h3>
+                <div className="space-y-3 text-sm sm:text-base">
+                  <div className="flex items-center gap-3 group">
+                    <span className="text-[#666666]">Email:</span>
+                    <a
+                      href="mailto:hello@kamo.dev"
+                      className="hover:opacity-70 transition-opacity underline decoration-dotted"
+                    >
+                      hello@kamo.dev
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-[#666666]">Location:</span>
+                    <span>Remote / Global</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-[#666666]">Status:</span>
+                    <span className="flex items-center gap-2">
+                      <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                      Available for projects
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Timeline */}
+            <div className="animate-fade-in delay-200">
+              <h3 className="text-xl sm:text-2xl font-medium mb-8 sm:mb-12 tracking-wide">CAREER TIMELINE</h3>
+              <div className="relative">
+                {/* Timeline Line */}
+                <div className="absolute left-[7px] top-0 bottom-0 w-[1px] bg-[#333333]/20" />
+
+                {/* Timeline Items */}
+                <div className="space-y-8 sm:space-y-12">
+                  {timeline.map((item, index) => (
+                    <div
+                      key={index}
+                      className="relative pl-8 sm:pl-12 group animate-slide-up"
+                      style={{ animationDelay: `${300 + index * 100}ms` }}
+                    >
+                      {/* Timeline Dot */}
+                      <div className="absolute left-0 top-1 w-4 h-4 rounded-full bg-[#333333] group-hover:scale-125 transition-transform duration-300" />
+
+                      {/* Content */}
+                      <div className="bg-white/30 backdrop-blur-sm p-4 sm:p-6 rounded-sm border border-[#333333]/10 hover:border-[#333333]/20 hover:bg-white/50 transition-all duration-300">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-2">
+                          <h4 className="font-medium text-base sm:text-lg">{item.title}</h4>
+                          <span className="text-xs sm:text-sm text-[#666666] font-mono">{item.year}</span>
+                        </div>
+                        <p className="text-sm sm:text-base text-[#666666] mb-2">{item.company}</p>
+                        <p className="text-xs sm:text-sm text-[#666666]/80 leading-relaxed">{item.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
