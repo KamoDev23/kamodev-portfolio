@@ -6,9 +6,9 @@ import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'Kamo.Dev',
+  description: 'Full-Stack & System Developer Portfolio',
+  generator: 'Next.js',
 }
 
 export default function RootLayout({

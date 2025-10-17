@@ -13,7 +13,7 @@ interface AboutSheetProps {
 const timeline = [
   {
     year: "2025",
-    title: "Full-Stack Developer - Tech Lead",
+    title: "Full-Stack Lead Developer",
     company: "Ellusion Co",
     description: "Leading development of scalable web applications",
   },
@@ -63,12 +63,12 @@ export function AboutSheet({ isOpen, onClose }: AboutSheetProps) {
 
       {/* Sheet */}
       <div
-        className={`fixed inset-x-0 bottom-0 bg-[#f5f5f5] dark:bg-[#1a1a1a] z-50 transition-all duration-700 ease-out ${
-          isOpen ? "translate-y-0" : "translate-y-full"
-        }`}
-        style={{ height: "100vh" }}
-      >
-        <div className="h-full overflow-y-auto">
+  className={`fixed inset-0 bg-[#f5f5f5] dark:bg-[#1a1a1a] z-50 transition-all duration-700 ease-out ${
+    isOpen ? "translate-y-0" : "translate-y-full"
+  }`}
+>
+  <div className="max-h-screen overflow-y-auto relative">
+
           <div className="max-w-[1200px] mx-auto px-4 sm:px-8 py-8 sm:py-12">
             {/* Close Button */}
             <button
@@ -88,7 +88,7 @@ export function AboutSheet({ isOpen, onClose }: AboutSheetProps) {
             </div>
 
             {/* Two Column Layout */}
-            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 max-h-[calc(100vh-180px)] overflow-hidden">
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 ">
               {/* Left Column - Profile Card */}
               <div className="animate-slide-up">
                 <div className="bg-white/70 dark:bg-[#222222]/70 backdrop-blur-sm p-6 rounded-sm border border-[#333333]/10 dark:border-[#e0e0e0]/10 hover:border-[#333333]/20 dark:hover:border-[#e0e0e0]/20 transition-all duration-500 h-full">
@@ -96,7 +96,7 @@ export function AboutSheet({ isOpen, onClose }: AboutSheetProps) {
                   <div className="mb-6">
                     <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-[#333333]/20 dark:border-[#e0e0e0]/20">
                       <Image
-                        src="/professional-developer-portrait.png"
+                        src="/kamodev3.jpeg"
                         alt="Kamo.Dev Profile"
                         width={80}
                         height={80}
@@ -141,6 +141,9 @@ export function AboutSheet({ isOpen, onClose }: AboutSheetProps) {
                         "Google Cloud",
                         "Firebase",
                         "Tailwind",
+                        "Framer",
+                        "Dart",
+                        "Flutter",
                       ].map((skill) => (
                         <span
                           key={skill}
@@ -152,11 +155,13 @@ export function AboutSheet({ isOpen, onClose }: AboutSheetProps) {
                     </div>
                   </div>
 
+                  
+
                   {/* Stats */}
-                  <div className="grid grid-cols-2 gap-3 mb-6 py-4 border-y border-[#333333]/10 dark:border-[#e0e0e0]/10 transition-colors duration-500">
+                  {/* <div className="grid grid-cols-2 gap-3 mb-6 py-4 border-y border-[#333333]/10 dark:border-[#e0e0e0]/10 transition-colors duration-500">
                     <div className="text-center">
                       <div className="text-lg sm:text-xl font-medium mb-1 text-[#333333] dark:text-[#e0e0e0]">
-                        50+
+                        10+
                       </div>
                       <div className="text-[10px] sm:text-xs text-[#666666] dark:text-[#999999]">projects</div>
                     </div>
@@ -166,7 +171,7 @@ export function AboutSheet({ isOpen, onClose }: AboutSheetProps) {
                       </div>
                       <div className="text-[10px] sm:text-xs text-[#666666] dark:text-[#999999]">success</div>
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* Contact Info */}
                   <div className="space-y-2 mb-6 text-xs sm:text-sm">
